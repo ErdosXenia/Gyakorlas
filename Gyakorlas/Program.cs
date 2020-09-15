@@ -35,17 +35,32 @@ namespace Gyakorlas
 
         public Kor(int sugar)//konstruktor
         {
-            r = sugar;
+            if (sugar < 1)
+            {
+                r = 1;
+            }
+            else
+            {
+                r = sugar;
+            }
+            
         }
 
-        public double KeruletK()
+        private double KeruletK()
         {
             return 2 * r * Math.PI;
         }
 
-        public double TeruletK()
+        private double TeruletK()
         {
             return Math.PI * Math.Pow(r, 2);
+        }
+
+        public void Adatok()
+        {
+            Console.WriteLine("Sugár {0}", r);
+            Console.WriteLine("Kerület: {0}" KeruletK());
+            Console.WriteLine("Terület {0}", TeruletK());
         }
     }
 
@@ -53,7 +68,7 @@ namespace Gyakorlas
     {
         static void Main(string[] args)
         {
-            Console.Write("Irja be a téglalap a oldalát: ");
+            Console.Write("Írja be a téglalap oldalát: ");
             int oldal1 = int.Parse(Console.ReadLine());
             Console.Write("Írja be a téglalap b oldalát: ");
             int oldal2 = int.Parse(Console.ReadLine());
@@ -66,6 +81,7 @@ namespace Gyakorlas
             Console.Write("\nÍrja be a kör sugarát: ");
             int sugar = int.Parse(Console.ReadLine());
             Kor k = new Kor(sugar);
+
 
             Console.WriteLine("Kerülete: {0}", k.KeruletK());
             Console.WriteLine("Területe: {0}", k.TeruletK());
